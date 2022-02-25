@@ -391,6 +391,7 @@ fi
 
 # Build meteor app if required
 if test -n "$meteor_version"; then
+  export NPM_DIR="$BUILD_DIR/.app-build/bundle/programs/server/npm"
   header "Meteor app detected: version ${meteor_version}"
   setup_meteor_build_environment
   run_if_present "$build_dir" 'scalingo-meteorprebuild'
