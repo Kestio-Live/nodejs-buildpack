@@ -393,7 +393,9 @@ fi
 if test -n "$meteor_version"; then
   header "Meteor app detected: version ${meteor_version}"
   setup_meteor_build_environment
+  run_if_present "$build_dir" 'scalingo-meteorprebuild'
   build_meteor_app $BUILD_DIR $CACHE_DIR
+  run_if_present "$build_dir" 'scalingo-meteorpostbuild'
 fi
 
 meta_set "build-step" "cleanup-script"
